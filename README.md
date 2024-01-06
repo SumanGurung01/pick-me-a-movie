@@ -11,6 +11,7 @@ Check out the Website [Click here](https://pick-me-a-movie-brown.vercel.app/)
 - **Effortless Search:** Find the perfect movie for your mood with our robust search functionality. Search by title, genre, or cast to discover the gems that match your preferences.
 - **Genre Selection:** Find best movie based on more than 20 genres.
 - **Recommendation:** application provides recommend for new movies based on your selected movies.
+- **Favorites:** Save your favorite movie in one place by adding it to favorites.
 
 
 ## Responsive Design
@@ -25,6 +26,7 @@ Whether you're on your desktop, tablet, or mobile device, Pick me a Movie ensure
 2. **Detailed Information:** Click on any movie to access in-depth details, including a synopsis, cast information, and more.
 3. **Watch Trailers:** Get a glimpse of the movie by watching its trailer directly on the platform.
 4. **Search Movies:** Use the search functionality to find movies based on titles, genres, or your favorite actors.
+5. **Add to Favorite:** Liked a movie, then add it to your favorites. 
 
 ## Technologies Used
 - **Next.js** in Frontend
