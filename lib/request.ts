@@ -1,4 +1,5 @@
 import { BannerType, Scroller, Movie, Person } from "@/typing";
+import toast from "react-hot-toast";
 
 export const BASE_URL = "https://api.themoviedb.org/3";
 export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
@@ -27,6 +28,97 @@ const movieCatagories = {
   comedy: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35`,
   romance: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`,
   horror: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=27`,
+};
+
+export const genre: Record<string, number> = {
+  Action: 28,
+  Adventure: 12,
+  Animation: 16,
+  Comedy: 35,
+  Crime: 80,
+  Documentary: 99,
+  Drama: 18,
+  Family: 10751,
+  Fantasy: 14,
+  History: 36,
+  Horror: 27,
+  Music: 10402,
+  Mystery: 9648,
+  Romance: 10749,
+  "Science Fiction": 878,
+  Thriller: 53,
+  War: 10752,
+  Western: 37,
+};
+
+const makeQuery = (value: string) => {
+  var words: string[] = value.split(" ");
+  words = words.filter((val: string) => val !== "");
+
+  words = words.map((val: string, index: number) => {
+    if (index !== words.length - 1) val = `${val}+`;
+    return val;
+  });
+  return words.join("");
+};
+
+export const getMovieDataByKeyword = async (keyword: string) => {
+  if (keyword === "") {
+    toast("Please enter movie name", {
+      icon: "⚠️",
+    });
+
+    return [];
+  }
+
+  const query: string = makeQuery(keyword);
+
+  var result: Scroller[] = [];
+
+  for (var i = 1; i <= 2; i++) {
+    await fetch(
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${i}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.results.forEach((movie: any) => {
+          result = [
+            ...result,
+            { id: movie.id, image: movie.poster_path, name: movie.title },
+          ];
+        });
+      });
+  }
+
+  if (result.length === 0) {
+    toast(`No result found for ${keyword}`, {
+      icon: "😔",
+    });
+    return [];
+  }
+
+  return result;
+};
+
+export const getMovieByGenre = async (genre: number) => {
+  var result: Scroller[] = [];
+
+  for (var i = 1; i <= 2; i++) {
+    await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${i}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.results.forEach((movie: any) => {
+          result = [
+            ...result,
+            { id: movie.id, image: movie.poster_path, name: movie.title },
+          ];
+        });
+      });
+  }
+
+  return result;
 };
 
 const getTrailorById = async (movie_id: number) => {
@@ -85,7 +177,6 @@ export const getMovieDataByCatagory = async (catagory: string) => {
 
   var movieEachPage: Scroller[] = [];
 
-  console.log(query);
   for (var i = 1; i <= 2; i++) {
     await fetch(`${query}&page=${i}`)
       .then((response) => response.json())

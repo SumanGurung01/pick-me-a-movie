@@ -1,42 +1,37 @@
 "use client";
 
+import { BASE_IMAGE_URL, generateRandomString } from "@/lib/request";
 import { useStore } from "@/store/store";
 import { Scroller } from "@/typing";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 import React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { generateRandomString } from "@/lib/request";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-function Favorite() {
+function Result() {
+  const [resultMovies] = useStore((state) => [state.resultMovies]);
   const router = useRouter();
-  const [favorites, setFavorites] = useStore((state) => [
-    state.favorites,
-    state.setFavorites,
-  ]);
-
   return (
-    favorites && (
-      <div className="flex items-center justify-center">
-        <div className="m-2 max-w-[1200px]">
-          <p className="my-4 text-center text-xl font-bold">
-            {favorites.length === 0 ? "No Movies Found" : "Your Favorites"}
-          </p>
-          <div className="flex flex-wrap justify-center">
-            {favorites.map((movie: Scroller) => {
+    resultMovies &&
+    resultMovies.length !== 0 && (
+      <div className="mt-4 w-full pl-2">
+        <p className="font-bold">Movies based on Search / Genre</p>
+        <div className="no-scrollbar flex overflow-x-scroll py-2">
+          {resultMovies.map((movie: Scroller) => {
+            if (movie.image) {
               return (
                 <Tooltip key={generateRandomString(20)}>
                   <TooltipTrigger asChild>
                     <Image
-                      src={movie.image}
+                      src={`${BASE_IMAGE_URL}${movie.image}`}
                       width={120}
                       height={100}
                       alt="movie poster"
-                      className="m-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
+                      className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                       onClick={() => router.push(`/movie/${movie.id}`)}
                     ></Image>
                   </TooltipTrigger>
@@ -45,12 +40,12 @@ function Favorite() {
                   </TooltipContent>
                 </Tooltip>
               );
-            })}
-          </div>
+            }
+          })}
         </div>
       </div>
     )
   );
 }
 
-export default Favorite;
+export default Result;

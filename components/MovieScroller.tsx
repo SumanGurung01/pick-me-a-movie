@@ -1,6 +1,6 @@
 "use client";
 
-import { getMovieDataByCatagory } from "@/lib/request";
+import { generateRandomString, getMovieDataByCatagory } from "@/lib/request";
 import { Scroller } from "@/typing";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,11 +24,11 @@ function MovieScroller({ catagory }: { catagory: string }) {
   return (
     movies && (
       <div className="mt-4 w-full pl-2">
-        <p>{catagory}</p>
+        <p className="font-bold">{catagory}</p>
         <div className="no-scrollbar flex overflow-x-scroll py-2">
           {movies.map((movie: Scroller) => {
             return (
-              <Tooltip>
+              <Tooltip key={generateRandomString(20)}>
                 <TooltipTrigger asChild>
                   <Image
                     src={movie.image}

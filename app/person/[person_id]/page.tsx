@@ -14,20 +14,27 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useRouter } from "next/navigation";
+import { PuffLoader } from "react-spinners";
 
 function Person({ params }: any) {
   const [person, setPerson] = useState<Person>();
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     getPersonData(params.person_id).then((data: Person) => {
       setPerson(data);
+      setLoading(false);
     });
   }, []);
 
-  return (
+  return loading ? (
+    <div className="flex h-screen w-full items-center justify-center">
+      <PuffLoader color="#36d7b7" />
+    </div>
+  ) : (
     person && (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center pt-5">
         <div className="mx-3 max-w-[1200px]">
           <div className="flex">
             <Image

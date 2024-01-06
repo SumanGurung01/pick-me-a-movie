@@ -1,5 +1,4 @@
 "use client";
-import Cast from "@/components/Cast";
 import {
   BASE_IMAGE_URL,
   generateRandomString,
@@ -17,7 +16,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useStore } from "@/store/store";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { PuffLoader } from "react-spinners";
 
 function Movie({ params }: any) {
   const [movieDetails, setMovieDetails] = useState<Movie>();
@@ -25,10 +25,12 @@ function Movie({ params }: any) {
     state.favorites,
     state.setFavorites,
   ]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getMovieData(params.movie_id).then((data: Movie) => {
       setMovieDetails(data);
+      setLoading(false);
     });
   }, []);
 
@@ -64,7 +66,11 @@ function Movie({ params }: any) {
     }
   };
 
-  return (
+  return loading ? (
+    <div className="flex h-screen w-full items-center justify-center">
+      <PuffLoader color="#36d7b7" />
+    </div>
+  ) : (
     movieDetails && (
       <div className="flex items-center justify-center">
         <div className="max-w-[1200px]">
