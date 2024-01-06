@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pick me a Movie
+Welcome to Pick me a Movie, your go-to destination for discovering and exploring a vast world of cinematic wonders. This responsive web application is designed to provide users with a seamless experience as they dive into the enchanting realm of movies.
 
-## Getting Started
+## Link
 
-First, run the development server:
+Check out the Website [Click here](https://pick-me-a-movie-brown.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Comprehensive Information:** Access detailed information about movies, including titles, descriptions, ratings, genres, running times, and cast.
+- **Trailers Galore:** Immerse yourself in the world of movies by watching trailers directly on the platform. Get a sneak peek before deciding on your next cinematic adventure.
+- **Effortless Search:** Find the perfect movie for your mood with our robust search functionality. Search by title, genre, or cast to discover the gems that match your preferences.
+- **Genre Selection:** Find best movie based on more than 20 genres.
+- **Recommendation:** application provides recommend for new movies based on your selected movies.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Responsive Design
+Whether you're on your desktop, tablet, or mobile device, Pick me a Movie ensures a consistent and user-friendly experience. The responsive design adapts seamlessly to various screen sizes, making movie exploration a pleasure anytime, anywhere.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<img src="https://github.com/SumanGurung01/pick-me-a-movie/assets/92732976/b938cb3f-2cb3-44a6-95dd-3d09e717cec8" width=100 height=200>
+<img src="https://github.com/SumanGurung01/pick-me-a-movie/assets/92732976/e9452e31-8f50-4db1-807a-eda41aecadb5" width=350 height=200>
+<img src="https://github.com/SumanGurung01/pick-me-a-movie/assets/92732976/fee18eea-ce56-4be8-9391-e9c1c8b27fa8" width=150 height=200>
 
-## Learn More
+## How to Use
+1. **Browse Movies:** Explore a curated collection of movies with just a click.
+2. **Detailed Information:** Click on any movie to access in-depth details, including a synopsis, cast information, and more.
+3. **Watch Trailers:** Get a glimpse of the movie by watching its trailer directly on the platform.
+4. **Search Movies:** Use the search functionality to find movies based on titles, genres, or your favorite actors.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used
+- **Next.js** in Frontend
+- **Shad-cn** for UI Components
+- **TMDb API** for data
+- **Zustand** for State Management
+- **Tailwind CSS** in styling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Feedback
+We welcome your feedback and contributions. Feel free to open an issue, submit a pull request, or reach out with your thoughts and ideas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
