@@ -6,7 +6,6 @@ import {
 } from "@/lib/request";
 import { Movie, Scroller } from "@/typing";
 import { Heart, PlayCircle } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -75,12 +74,13 @@ function Movie({ params }: any) {
       <div className="flex items-center justify-center">
         <div className="max-w-[1200px]">
           <div>
-            <Image
+            <img
               src={movieDetails.banner_image}
               alt="banner image"
               width={1200}
               height={100}
               className="object-cover md:h-[500px]"
+              loading="lazy"
             />
             <div className="absolute top-16 mx-5 flex gap-5">
               <Link href={movieDetails.video_link} target="_blank">
@@ -114,12 +114,13 @@ function Movie({ params }: any) {
             </div>
           </div>
           <div className="ml-2 mt-4 flex">
-            <Image
+            <img
               src={movieDetails.poster_image}
               width={200}
               height={10}
               alt="banner image"
               className="hidden rounded-sm md:block md:max-h-[500px]"
+              loading="lazy"
             />
             <div className="md:ml-4">
               <p className="mb-2 text-lg font-bold md:text-2xl">
@@ -156,14 +157,15 @@ function Movie({ params }: any) {
                   return (
                     <Tooltip key={generateRandomString(20)}>
                       <TooltipTrigger asChild>
-                        <Image
+                        <img
                           src={`${BASE_IMAGE_URL}${person.profile_path}`}
                           width={60}
                           height={60}
                           alt="movie poster"
                           className="mr-2 rounded-sm object-cover duration-300 hover:scale-105 hover:cursor-pointer"
                           onClick={() => router.push(`/person/${person.id}`)}
-                        ></Image>
+                          loading="lazy"
+                        ></img>
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>{person.original_name}</p>
@@ -182,14 +184,15 @@ function Movie({ params }: any) {
                   return (
                     <Tooltip key={generateRandomString(20)}>
                       <TooltipTrigger asChild>
-                        <Image
+                        <img
                           src={`${BASE_IMAGE_URL}${movie.poster_path}`}
                           width={120}
                           height={100}
                           alt="movie poster"
                           className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                           onClick={() => router.push(`/movie/${movie.id}`)}
-                        ></Image>
+                          loading="lazy"
+                        ></img>
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>{movie.title}</p>

@@ -9,7 +9,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 function Result() {
@@ -26,14 +25,15 @@ function Result() {
               return (
                 <Tooltip key={generateRandomString(20)}>
                   <TooltipTrigger asChild>
-                    <Image
+                    <img
                       src={`${BASE_IMAGE_URL}${movie.image}`}
                       width={120}
                       height={100}
                       alt="movie poster"
                       className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                       onClick={() => router.push(`/movie/${movie.id}`)}
-                    ></Image>
+                      loading="lazy"
+                    ></img>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{movie.name}</p>

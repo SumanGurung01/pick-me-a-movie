@@ -1,6 +1,7 @@
-import Banner from "@/components/Banner";
 import MovieScroller from "@/components/MovieScroller";
 import Result from "@/components/Result";
+import React from "react";
+import Banner from "@/components/Banner";
 
 export default function Home() {
   return (

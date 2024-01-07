@@ -2,7 +2,6 @@
 
 import { generateRandomString, getMovieDataByCatagory } from "@/lib/request";
 import { Scroller } from "@/typing";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {
@@ -30,14 +29,15 @@ function MovieScroller({ catagory }: { catagory: string }) {
             return (
               <Tooltip key={generateRandomString(20)}>
                 <TooltipTrigger asChild>
-                  <Image
+                  <img
                     src={movie.image}
                     width={120}
                     height={100}
                     alt="movie poster"
                     className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                     onClick={() => router.push(`/movie/${movie.id}`)}
-                  ></Image>
+                    loading="lazy"
+                  ></img>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{movie.name}</p>

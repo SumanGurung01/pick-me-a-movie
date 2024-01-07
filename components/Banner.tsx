@@ -2,7 +2,6 @@
 
 import { getMovieBanner } from "@/lib/request";
 import { BannerType } from "@/typing";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 function Banner() {
@@ -21,12 +20,13 @@ function Banner() {
   return (
     banner && (
       <div>
-        <Image
+        <img
           src={banner.image}
           width={1200}
           height={100}
           alt="movie banner"
           className="object-cover brightness-75 md:max-h-[500px]"
+          loading="lazy"
         />
         <div className="absolute top-8 z-50 mt-10 max-h-[500px] w-3/4 pl-2 md:top-12 md:w-1/2 md:pl-5 lg:top-14 ">
           <p className="my-3 line-clamp-2 text-2xl font-bold text-zinc-200 md:my-10 md:text-5xl">

@@ -21,9 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <head>
-          <link rel="icon" href="/logo.png"></link>
-        </head>
         <TooltipProvider>
           <ThemeProvider
             attribute="class"
