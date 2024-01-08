@@ -19,7 +19,6 @@ import {
 } from "@/lib/request";
 import { useStore } from "@/store/store";
 import { Scroller } from "@/typing";
-import Favorite from "@/app/favorites/page";
 
 function Navbar() {
   const [keyword, setKeyword] = useState<string>("");

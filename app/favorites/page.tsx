@@ -10,10 +10,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { generateRandomString } from "@/lib/request";
+import Img from "@/components/Img";
 
 function Favorite() {
   const router = useRouter();
-  const [favorites, setFavorites] = useStore((state) => [
+  const [favorites] = useStore((state) => [
     state.favorites,
     state.setFavorites,
   ]);
@@ -30,15 +31,14 @@ function Favorite() {
               return (
                 <Tooltip key={generateRandomString(20)}>
                   <TooltipTrigger asChild>
-                    <img
+                    <Img
                       src={movie.image}
                       width={120}
                       height={100}
                       alt="movie poster"
                       className="m-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                       onClick={() => router.push(`/movie/${movie.id}`)}
-                      loading="lazy"
-                    ></img>
+                    ></Img>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{movie.name}</p>

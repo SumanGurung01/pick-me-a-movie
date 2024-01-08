@@ -9,6 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Img from "./Img";
 
 function MovieScroller({ catagory }: { catagory: string }) {
   const [movies, setMovies] = useState<Scroller[]>();
@@ -29,15 +30,14 @@ function MovieScroller({ catagory }: { catagory: string }) {
             return (
               <Tooltip key={generateRandomString(20)}>
                 <TooltipTrigger asChild>
-                  <img
+                  <Img
                     src={movie.image}
                     width={120}
                     height={100}
                     alt="movie poster"
                     className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                     onClick={() => router.push(`/movie/${movie.id}`)}
-                    loading="lazy"
-                  ></img>
+                  />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{movie.name}</p>

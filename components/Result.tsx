@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useRouter } from "next/navigation";
+import Img from "./Img";
 
 function Result() {
   const [resultMovies] = useStore((state) => [state.resultMovies]);
@@ -25,15 +26,14 @@ function Result() {
               return (
                 <Tooltip key={generateRandomString(20)}>
                   <TooltipTrigger asChild>
-                    <img
+                    <Img
                       src={`${BASE_IMAGE_URL}${movie.image}`}
                       width={120}
                       height={100}
                       alt="movie poster"
                       className="mr-2 rounded-sm duration-300 hover:scale-105 hover:cursor-pointer"
                       onClick={() => router.push(`/movie/${movie.id}`)}
-                      loading="lazy"
-                    ></img>
+                    ></Img>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{movie.name}</p>
